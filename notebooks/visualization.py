@@ -20,6 +20,29 @@ import matplotlib.image as mpimg
 import matplotlib.cm as mpcm
 
 
+classTolabel = {
+    0 : 'none', 
+    1 :'aeroplane',
+    2 :'bicycle',
+    3 :'bird',
+    4 :'boat',
+    5 :'bottle',
+    6 :'bus',
+    7 :'car',
+    8 :'cat',
+    9 :'chair',
+    10:'cow',
+    11:'diningtable',
+    12:'dog',
+    13:'horse',
+    14:'motorbike',
+    15:'person',
+    16:'pottedplant',
+    17:'sheep',
+    18:'sofa',
+    19: 'train',
+    20: 'tvmonitor',
+    }
 # =========================================================================== #
 # Some colormaps.
 # =========================================================================== #
@@ -75,7 +98,7 @@ def bboxes_draw_on_img(img, classes, scores, bboxes, colors, thickness=2):
         p2 = (int(bbox[2] * shape[0]), int(bbox[3] * shape[1]))
         cv2.rectangle(img, p1[::-1], p2[::-1], color, thickness)
         # Draw text...
-        s = '%s/%.3f' % (classes[i], scores[i])
+        s = '%s/%.3f' % (classTolabel[classes[i]], scores[i])
         p1 = (p1[0]-5, p1[1])
         cv2.putText(img, s, p1[::-1], cv2.FONT_HERSHEY_DUPLEX, 0.4, color, 1)
 
